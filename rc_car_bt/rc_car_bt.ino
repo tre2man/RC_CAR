@@ -34,6 +34,9 @@ void loop()
   }
   if (Serial.available()) {
     bluetooth.write(Serial.read());
+    bt_cmd = Serial.read(); //변수에 입력된 데이터 저장
+    Serial.println((char)bt_cmd);
+    rc_ctrl_val(bt_cmd);     //입력된 데이터에 따라 모터에 입력될 변수를 조정하는 함수
   }
   motor_drive();             //모터를 구동하는 함수
 }
